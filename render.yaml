@@ -1,0 +1,18 @@
+# Deploy em 1 clique no Render (https://render.com) — "New > Blueprint" apontando para este repositório.
+services:
+  - type: web
+    name: agenda-escalas
+    runtime: docker
+    plan: starter            # disco persistente exige plano pago; no free o banco é recriado a cada deploy
+    healthCheckPath: /api/health
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_PATH
+        value: /data/agenda.db
+      - key: SEED_DEMO
+        value: "true"
+    disk:
+      name: agenda-data
+      mountPath: /data
+      sizeGB: 1

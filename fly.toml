@@ -1,0 +1,26 @@
+# Alternativa: Fly.io — `fly launch --copy-config` e `fly volumes create agenda_data --size 1`
+app = "agenda-escalas"
+primary_region = "gru"   # São Paulo
+
+[build]
+
+[env]
+  DB_PATH = "/data/agenda.db"
+  PORT = "3000"
+
+[[mounts]]
+  source = "agenda_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    method = "GET"
+    path = "/api/health"
+    interval = "30s"
+    timeout = "5s"
