@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Agenda de treinamentos, folgas e gestão de escalas de trabalho">
+  <title>Agenda &amp; Escalas</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Pular para o conteúdo principal</a>
+
+  <header class="topbar" id="topbar" hidden>
+    <div class="brand"><span aria-hidden="true" class="logo">▦</span> Agenda &amp; Escalas</div>
+    <nav aria-label="Navegação principal" id="nav"></nav>
+    <div class="user-area">
+      <span id="who"></span>
+      <button type="button" class="btn ghost" id="btn-password">Alterar senha</button>
+      <button type="button" class="btn ghost" id="btn-logout">Sair</button>
+    </div>
+  </header>
+
+  <aside class="a11y-bar" aria-label="Opções de acessibilidade">
+    <button type="button" class="btn small ghost" data-font="-1" aria-label="Diminuir tamanho do texto">A−</button>
+    <button type="button" class="btn small ghost" data-font="0" aria-label="Tamanho de texto padrão">A</button>
+    <button type="button" class="btn small ghost" data-font="1" aria-label="Aumentar tamanho do texto">A+</button>
+    <button type="button" class="btn small ghost" id="btn-contrast" aria-pressed="false">Alto contraste</button>
+  </aside>
+
+  <main id="main" tabindex="-1"></main>
+
+  <!-- Regiões anunciadas por leitores de tela -->
+  <div id="live-polite" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <dialog id="dialog" aria-labelledby="dialog-title">
+    <form method="dialog" id="dialog-form" novalidate>
+      <h2 id="dialog-title"></h2>
+      <div id="dialog-body"></div>
+      <p class="form-error" id="dialog-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn ghost" id="dialog-cancel">Cancelar</button>
+        <button type="submit" class="btn primary" id="dialog-submit">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <noscript><p class="container">Este sistema precisa de JavaScript habilitado.</p></noscript>
+</body>
+</html>
