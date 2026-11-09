@@ -1,0 +1,21 @@
+# Deploy no Render (https://render.com) — "New > Blueprint" apontando para o repositório no GitHub.
+# Plano gratuito: o serviço "dorme" após ~15 min sem acesso e o disco é temporário,
+# então o banco volta aos dados de demonstração sempre que o serviço reinicia.
+# Para guardar os dados de forma permanente, use plan: starter e descomente o bloco "disk".
+services:
+  - type: web
+    name: agenda-escalas
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SEED_DEMO
+        value: "true"
+      - key: DB_PATH
+        value: /tmp/agenda.db
+    # disk:
+    #   name: agenda-data
+    #   mountPath: /data
+    #   sizeGB: 1
